@@ -1,0 +1,13 @@
+{
+  "version": "2026-10-22-unverified",
+  "note": "Tarifs indicatifs a verifier sur les pages officielles des fournisseurs avant tout usage reel. Modifier ce fichier, jamais le code.",
+  "openai_live": { "usd_per_minute": 0.05, "source": "https://developers.openai.com/api/docs/models/gpt-live-1" },
+  "anthropic": {
+    "claude-sonnet-5-5": {
+      "usd_per_mtok_input": null,
+      "usd_per_mtok_output": null,
+      "usd_per_mtok_cache_read": null,
+      "source": "A renseigner depuis https://www.anthropic.com/pricing"
+    }
+  }
+}

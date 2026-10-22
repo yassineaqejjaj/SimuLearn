@@ -1,0 +1,48 @@
+# Auto-hébergé. Les secrets viennent de .env (voir .env.example) ; aucun n'est codé ici.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: simulearn
+      POSTGRES_USER: simulearn
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?définir POSTGRES_PASSWORD dans .env}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U simulearn"]
+      interval: 5s
+      retries: 10
+
+  valkey:
+    image: valkey/valkey:8
+    volumes: [valkeydata:/data]
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0
+    command: start-dev --import-realm
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?définir KEYCLOAK_ADMIN_PASSWORD dans .env}
+    volumes: ["./infrastructure/docker/keycloak-realm.json:/opt/keycloak/data/import/realm.json:ro"]
+    ports: ["8080:8080"]
+
+  api:
+    build: { context: ./apps/api }
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://simulearn:${POSTGRES_PASSWORD}@postgres:5432/simulearn
+      VALKEY_URL: redis://valkey:6379/0
+    depends_on: { postgres: { condition: service_healthy } }
+    ports: ["8000:8000"]
+
+  web:
+    build:
+      context: ./apps/web
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000}
+        NEXT_PUBLIC_AUTH_MODE: ${NEXT_PUBLIC_AUTH_MODE:-keycloak}
+        NEXT_PUBLIC_KEYCLOAK_URL: ${NEXT_PUBLIC_KEYCLOAK_URL:-http://localhost:8080}
+        NEXT_PUBLIC_KEYCLOAK_REALM: ${NEXT_PUBLIC_KEYCLOAK_REALM:-simulearn}
+        NEXT_PUBLIC_KEYCLOAK_CLIENT_ID: ${NEXT_PUBLIC_KEYCLOAK_CLIENT_ID:-simulearn-web}
+    ports: ["3000:3000"]
+
+volumes: { pgdata: {}, valkeydata: {} }
