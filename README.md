@@ -9,6 +9,17 @@
 
 ![Salle de simulation](docs/screenshots/05-salle-simulation.png)
 
+## En un coup d'œil
+
+| | |
+|---|---|
+| **Ce que c'est** | Une plateforme de simulations professionnelles vocales : l'apprenant parle à un patient IA, puis reçoit une évaluation par compétence appuyée sur des extraits vérifiables de sa conversation. |
+| **Pour qui** | Formation en santé (IFSI, France) : apprenants et formateurs (voir [§2](#2-partie-fonctionnelle)). |
+| **Statut** | **Prototype** (MVP) : parcours complet testé en mode mock ; intégrations réelles non testées (voir [§1](#1-état-du-projet--à-lire-dabord)). Données fictives uniquement. |
+| **Limites principales** | Pas de certification ; revue juridique, sécurité et AIPD à faire ; voix, Claude, Keycloak et PostgreSQL jamais validés en réel (voir [§6](#6-limites-connues-et-suite)). |
+| **Feuille de route** | Non documentée à ce stade (pistes dans le [§6](#6-limites-connues-et-suite)). |
+| **Licence** | Aucun fichier de licence pour l'instant (voir [Licence](#licence)). |
+
 ## Sommaire
 1. [État du projet : à lire d'abord](#1-état-du-projet--à-lire-dabord)
 2. [Partie fonctionnelle](#2-partie-fonctionnelle) — le produit, le parcours apprenant, l'espace formateur, l'évaluation
