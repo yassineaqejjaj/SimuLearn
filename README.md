@@ -284,3 +284,11 @@ Tous ces tests utilisent des fournisseurs simulés : **aucun appel payant, aucun
 
 ## Licence
 Non définie à ce stade : sans licence explicite, tous droits réservés. À choisir avant toute ouverture du dépôt.
+
+---
+
+## Part of an engineering approach
+
+Built with the [Agentic SDLC framework](https://github.com/yassineaqejjaj/agentic-sdlc) (earned autonomy). Read how this project was built and what its checks caught in the [case study](https://github.com/yassineaqejjaj/agentic-sdlc/blob/main/docs/case-studies/simulearn.md).
+
+Companion to the book [Leading with AI: A Blueprint for AI-Enhanced Healthcare](https://www.amazon.fr/dp/B0CVB848M6) and [Leading with AI: Embracing the Future of Education](https://www.amazon.fr/dp/B0CN5PG7LT).
