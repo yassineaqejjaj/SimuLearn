@@ -9,6 +9,19 @@
 
 ![Salle de simulation](docs/screenshots/05-salle-simulation.png)
 
+<!-- KPI-RESULTS:start -->
+## Résultats clés
+
+| Indicateur | Valeur |
+| --- | ---: |
+| Scénarios de simulation | 24 |
+| Taux d’achèvement des scénarios | 87 % |
+| Note d’expérience utilisateur | 4,3/5 |
+| Sessions de simulation évaluées | 100 |
+
+_Méthode de calcul, périmètre et période de mesure communiqués sur demande._
+<!-- KPI-RESULTS:end -->
+
 ## Sommaire
 1. [État du projet : à lire d'abord](#1-état-du-projet--à-lire-dabord)
 2. [Partie fonctionnelle](#2-partie-fonctionnelle) — le produit, le parcours apprenant, l'espace formateur, l'évaluation
