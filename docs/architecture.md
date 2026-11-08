@@ -2,11 +2,19 @@
 
 Next.js (apps/web) → FastAPI (apps/api) → PostgreSQL. GPT-Live : le navigateur parle en WebRTC directement à OpenAI ; FastAPI ne voit jamais l'audio. Claude n'est appelé qu'à l'évaluation finale.
 
-```
-navigateur ──SDP offer──▶ FastAPI ──POST /v1/live/sessions──▶ OpenAI
-navigateur ◀──SDP answer── FastAPI
-navigateur ◀═══ WebRTC audio + data channel ═══▶ OpenAI
-FastAPI ◀── sideband wss /v1/live/sessions/{id}/attach (transcripts, usage, delegation) ── OpenAI
+```mermaid
+sequenceDiagram
+    participant Browser as Navigateur
+    participant API as FastAPI
+    participant OpenAI as OpenAI
+    Browser->>API: SDP offer
+    API->>OpenAI: POST /v1/live/sessions
+    OpenAI-->>API: SDP answer
+    API-->>Browser: SDP answer
+    Browser->>OpenAI: WebRTC audio + data channel
+    OpenAI-->>Browser: WebRTC audio + data channel
+    API->>OpenAI: Attach sideband WSS /v1/live/sessions/{id}/attach
+    OpenAI-->>API: Transcripts, usage, delegation
 ```
 
 ## Modules (apps/api/app)
@@ -24,3 +32,4 @@ FastAPI ◀── sideband wss /v1/live/sessions/{id}/attach (transcripts, usage
 - Pilotage pédagogique Claude (fonction B) et assistance scénarios (C) : **non implémentés**. Les délégations GPT-Live reçoivent une réponse neutre (`thinking.append`, même `delegation_id`).
 - `ElevenLabsClaudeVoiceProvider` : non implémenté (comme demandé). L'interface `VoiceSimulationProvider` est prête.
 - Gestion des groupes (création/affectation) : lecture seule dans l'UI formateur.
+
