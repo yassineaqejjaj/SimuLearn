@@ -1,5 +1,7 @@
 # SimuLearn
 
+![IASEEN Constellation — SimuLearn](docs/assets/github-cover.svg)
+
 > **Practice before it matters.**
 > Simulations professionnelles vocales pour la formation en santé (IFSI, France) : l'apprenant parle à un patient IA, puis reçoit une évaluation argumentée, appuyée sur des extraits vérifiables de sa propre conversation.
 
